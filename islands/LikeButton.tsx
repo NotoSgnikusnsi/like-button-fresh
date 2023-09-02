@@ -1,8 +1,16 @@
 import { type Signal, signal } from "@preact/signals";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 export default function LikeButton() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("コンポーネントがレンダリングされました");
+  }, []);
+
+  useEffect(() => {
+    console.log(`カウント回数：${count}`);
+  }, [count]);
   const handleClick = () => {
     setCount((prevCount) => prevCount + 1);
   };
