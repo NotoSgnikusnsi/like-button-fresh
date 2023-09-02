@@ -1,19 +1,17 @@
 import { type Signal, signal } from "@preact/signals";
+import { useState } from "preact/hooks";
 
-interface Count {
-  count: Signal<number>;
-}
-
-export default function LikeButton(props: Count) {
+export default function LikeButton() {
+  const [count, setCount] = useState(0);
   const handleClick = () => {
-    props.count.value += 1;
+    setCount((prevCount) => prevCount + 1);
   };
   return (
     <button
       onClick={handleClick}
       class="bg-[#ef4444] text-white rounded-xl p-3 hover:bg-[#dc2626]"
     >
-      ♡{props.count.value}
+      ♡{count}
     </button>
   );
 }
